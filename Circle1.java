@@ -9,11 +9,10 @@ public Circle1(double x, double y, double radius)
 
 public boolean intersects(Circle other)
 {
-   if (Math.abs(center.x - other.center.x) < radius &&
-       Math.abs(center.y - other.center.y) < radius)
+   if (Math.abs(center.x - other.center.x) <= (radius+other.radius) &&
+       Math.abs(center.y - other.center.y) <= (radius+other.radius))
       return true;
    return false;
 }
 
 }
-

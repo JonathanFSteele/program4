@@ -13,10 +13,10 @@
 
 import org.junit.*;
 
-public class Circle1Test
+public class Circle2Test
 {
    // Data you need for each test case
-   private Circle1 circle1;
+   private Circle2 circle1;
 
 //
 // Stuff you want to do before each test case
@@ -25,7 +25,7 @@ public class Circle1Test
 public void setup()
 {
    //System.out.println("\nTest starting...");
-   circle1 = new Circle1(1,2,3);
+   circle1 = new Circle2(1,2,3);
 }
 
 //
@@ -104,7 +104,7 @@ public void scaleDown()
 public void NotIntersecting()
 {
    boolean i;
-   Circle1 circle2 = new Circle1(8,2,3);
+   Circle2 circle2 = new Circle2(8,2,3);
    i = circle1.intersects(circle2);
    Assert.assertTrue(i==false);
 }
@@ -116,7 +116,7 @@ public void NotIntersecting()
 public void BarelyIntersecting()
 {
    boolean i;
-   Circle1 circle2 = new Circle1(7,2,3);
+   Circle2 circle2 = new Circle2(7,2,3);
    i = circle1.intersects(circle2);
    Assert.assertTrue(i==true);
 }
@@ -128,7 +128,7 @@ public void BarelyIntersecting()
 public void Intersecting()
 {
    boolean i;
-   Circle1 circle2 = new Circle1(6,2,3);
+   Circle2 circle2 = new Circle2(6,2,3);
    i = circle1.intersects(circle2);
    Assert.assertTrue(i==true);
 }
@@ -148,12 +148,12 @@ public void Intersecting()
 
 //
 // Test for Radius Less than 0 Should throw an error
-// TODO: ASK TOUPS ABOUT THIS
+//
 // @Test
 // public void MinInvalidRadius()
 // {
 //   try {
-//     Circle1 circle2 = new Circle1(1,2,-1);
+//     Circle2 circle2 = new Circle2(1,2,-1);
 //     Assert.fail("A negative radius was allowed");
 //   } catch (Exception e) {
 //     Assert.assertTrue(1==1); //exception was thrown so Pass the test.

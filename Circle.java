@@ -1,5 +1,5 @@
 /**
-* Implements a base abstract class for a circle. Everything except 
+* Implements a base abstract class for a circle. Everything except
 * a intersects() method is implemented here. Subclass must implement
 * the intersects() method.
 **/
@@ -19,7 +19,15 @@ public Circle(double x, double y, double radius)
    center = new Point();
    center.x = x;
    center.y = y;
-   this.radius = radius;
+   //practically, A circle doesnt have a radius less than zero.
+   if(radius < 0)
+   {
+     throw new java.lang.Error("ERROR: Radius must be 0 or greater!");
+   }
+   else
+   {
+     this.radius = radius;
+   }
 }
 
 /**
@@ -28,9 +36,10 @@ public Circle(double x, double y, double radius)
 *        make it 80% as big, 2.0 doubles its size)
 * @return the new radius
 **/
+//TODO: ASK ABOUT THIS
 public double scale(double factor)
 {
-   radius = radius + factor;
+   radius = radius * factor; //Needs to multiply factor not add so we changed + to *.
    return radius;
 }
 
@@ -56,4 +65,3 @@ public Point moveBy(double xOffset, double yOffset)
 public abstract boolean intersects(Circle other);
 
 }
-
