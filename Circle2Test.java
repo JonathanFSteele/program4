@@ -24,7 +24,6 @@ public class Circle2Test
 @Before
 public void setup()
 {
-   //System.out.println("\nTest starting...");
    circle1 = new Circle2(1,2,3);
 }
 
@@ -32,10 +31,7 @@ public void setup()
 // Stuff you want to do after each test case
 //
 @After
-public void teardown()
-{
-   //System.out.println("\nTest finished.");
-}
+public void teardown(){}
 
 //
 // Test a simple positive move
@@ -44,7 +40,6 @@ public void teardown()
 public void simpleMove()
 {
    Point p;
-   //System.out.println("Running test simpleMove.");
    p = circle1.moveBy(1,1);
    Assert.assertTrue(p.x == 2 && p.y == 3);
 }
@@ -56,7 +51,6 @@ public void simpleMove()
 public void simpleMoveNeg()
 {
    Point p;
-   //System.out.println("Running test simpleMoveNeg.");
    p = circle1.moveBy(-1,-1);
    Assert.assertTrue(p.x == 0 && p.y == 1);
 }
@@ -68,7 +62,6 @@ public void simpleMoveNeg()
 public void scaleUp()
 {
    double r;
-   //System.out.println("Running test simpleMoveNeg.");
    r = circle1.scale(2);
    Assert.assertTrue(r == 6);
 }
@@ -80,7 +73,6 @@ public void scaleUp()
 public void scaleSame()
 {
    double r;
-   //System.out.println("Running test simpleMoveNeg.");
    r = circle1.scale(1);
    Assert.assertTrue(r == 3);
 }
@@ -92,7 +84,6 @@ public void scaleSame()
 public void scaleDown()
 {
    double r;
-   //System.out.println("Running test simpleMoveNeg.");
    r = circle1.scale(.5);
    Assert.assertTrue(r == 1.5);
 }
@@ -134,46 +125,58 @@ public void Intersecting()
 }
 
 //
-// Test Where a Circle is Intersecting with one another
-//TODO: ASK ABOUT THIS
-// @Test
-// public void SmallCircleInsideButNotIntersecting()
-// {
-//    boolean i;
-//    Circle1 circle2 = new Circle1(1,2,1);
-//    i = circle1.intersects(circle2);
-//    Assert.assertTrue(i==false);
-// }
+// Test Where a Circle is Intersecting with one another, and the center of 1 circle is inside one another.
+//
+@Test
+public void SmallCircleInsideIntersecting()
+{
+   boolean i;
+   Circle2 circle2 = new Circle2(1,3,2);
+   i = circle1.intersects(circle2);
+   Assert.assertTrue(i==true);
+}
 
+//
+// Test Where a Circle is Not Intersecting with one another, and the center of 1 circle is inside one another.
+//
+@Test
+public void SmallCircleInsideButNotIntersecting()
+{
+   boolean i;
+   Circle2 circle2 = new Circle2(1,2,1);
+   i = circle1.intersects(circle2);
+   Assert.assertTrue(i==false);
+}
 
 //
 // Test for Radius Less than 0 Should throw an error
 //
-// @Test
-// public void MinInvalidRadius()
-// {
-//   try {
-//     Circle2 circle2 = new Circle2(1,2,-1);
-//     Assert.fail("A negative radius was allowed");
-//   } catch (Exception e) {
-//     Assert.assertTrue(1==1); //exception was thrown so Pass the test.
-//   }
-// }
+@Test
+public void MinInvalidRadius()
+{
+  try {
+    Circle2 circle2 = new Circle2(1,2,-1); //Should Error as It exceeds the double amount minimum
+    Assert.fail("A negative radius was allowed");
+  } catch (Exception e) {
+    Assert.assertTrue(1==1); //exception was thrown so Pass the test.
+  }
+}
 
-//TODO: ASK TOUPS ABOUT THIS
+//
 // Test for Radius Greater than the Limit of Double Should throw an error
 //
-// @Test
-// public void MaxInvalidRadius()
-// {
-//   try {
-//     Circle1 circle2 = new Circle1(1,2,Double.MAX_VALUE+1);
-//     System.out.println("circle2 radius 2 = " + circle2.radius);
-//     Assert.fail("A double plus 1 radius was allowed");
-//   } catch (Exception e) {
-//     Assert.assertTrue(1==1); //exception was thrown so Pass the test.
-//   }
-// }
+@Test
+public void MaxInvalidRadius()
+{
+  try {
+    double maxvalue = Double.MAX_VALUE;
+    Circle2 circle2 = new Circle2(1,2,maxvalue*2); //Should Error as It exceeds the double amount limit
+    System.out.println("circle2 radius 2 = " + circle2.radius);
+    Assert.fail("A double plus 1 radius was allowed");
+  } catch (Exception e) {
+    Assert.assertTrue(1==1); //exception was thrown so Pass the test.
+  }
+}
 
 /*** NOT USED
 public static void main(String args[])

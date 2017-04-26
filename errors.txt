@@ -1,3 +1,4 @@
+Notes: Tests are expected to throw two errors as two tests exceed the limit for the doubles passed in.
 Circle.java:
   - Fixes:
       Line 22-30 - Added if to Prevent radius to be less than 0. Caught by MinInvalidRadius test.
@@ -6,8 +7,10 @@ Circle1.java:
   - Fixes:
       Line 12-13 - Should be radius+other.radius to truly calculate the distance between the centers. Caught by Intersecting test.
       Line 12-13 - Should be <= because of circles that are exactly intersecting . Caught by BarelyIntersecting test.
+      Lines 17-30 - Had to implement return to check and see if there is a circle within a circle.
 Circle2.java:
   - Fixes:
       Line 8 - x and y were in the wrong order, switched them around to the right order. Caught by the simpleMove test.
       Line 16 - Should be radius+other.radius to truly calculate the distance between the centers. Caught by Intersecting test.
       Line 16 - Should be <= because of circles that are exactly intersecting . Caught by BarelyIntersecting test.
+      Lines 17-30 - Had to implement return to check and see if there is a circle within a circle.

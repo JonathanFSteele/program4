@@ -19,10 +19,17 @@ public Circle(double x, double y, double radius)
    center = new Point();
    center.x = x;
    center.y = y;
+   double maxvalue = Double.MAX_VALUE;
    //practically, A circle doesnt have a radius less than zero.
    if(radius < 0)
    {
+     /*Throw an error when radius is less than 0 as the radius cannot be a negative*/
      throw new java.lang.Error("ERROR: Radius must be 0 or greater!");
+   }
+   else if(radius > maxvalue)
+   {
+     /*Throw an error when radius is less than 0 as the radius cannot be a negative*/
+     throw new java.lang.Error("ERROR: Radius must be Less than Max Double Value!");
    }
    else
    {
